@@ -7,6 +7,7 @@ gem 'rails', '4.0.2'
 
 
 gem 'twitter'
+gem 'rest-client'
 
 group :development do
 	gem 'figaro'

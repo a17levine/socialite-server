@@ -6,6 +6,7 @@ SocialiteServer::Application.routes.draw do
   # root 'welcome#index'
 
   get 'twitter/' => "tweets#index"
+  get 'instagram/' => "instagrams#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
