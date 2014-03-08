@@ -4,7 +4,16 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+
+gem 'twitter'
+
+group :development do
+	gem 'figaro'
+	gem 'quiet_assets'
+	gem 'sqlite3'
+	gem 'pry'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
