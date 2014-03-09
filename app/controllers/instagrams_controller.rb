@@ -26,7 +26,19 @@ class InstagramsController < ApplicationController
 
 
 	def index
-		@instagram_results = RestClient.get "https://api.instagram.com/v1/tags/fullscreen/media/recent?client_id=#{ENV['INSTAGRAM_CLIENT_ID']}"
+    first_letter_of_query = instagram_params[0]
+    if first_letter_of_query == "#" || first_letter_of_query == "@"
+      @instagram_results = "Sorry, you cannot query Instagram with #{first_letter_of_query}"
+      render json: @instagram_results
+    end
+		@instagram_results = RestClient.get "https://api.instagram.com/v1/tags/#{instagram_params}/media/recent?client_id=#{ENV['INSTAGRAM_CLIENT_ID']}"
 		render json: @instagram_results
 	end
+
+  private
+
+  def instagram_params
+    params.require(:instagram_query).to_s
+  end
+
 end
