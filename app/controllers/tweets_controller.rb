@@ -35,7 +35,15 @@ class TweetsController < ApplicationController
 			config.access_token_secret = ENV["TWITTER_ACCESS_SECRET"]
 		end
 
-		@twitter_results = @twitter_client.search("@fullscreen", :lang => "en", count: 10).to_h.to_json
+		@twitter_results = @twitter_client.search("#{twitter_params.to_s}", :lang => "en", count: 10).to_h.to_json
 		render json: @twitter_results
 	end
+
+  private
+
+  def twitter_params
+    params.require(:twitter_query)
+  end
+
+
 end
